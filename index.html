@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BALANGKAS Planning Laboratory</title>
+<meta name="description" content="BALANGKAS Planning Laboratory (DCERP–CHE, UP Los Baños) turns fragmented spatial data into integrated planning for communities — land use, transport, regional, and public works.">
+<meta property="og:title" content="BALANGKAS Planning Laboratory">
+<meta property="og:description" content="Turning fragmented spatial data into integrated planning for communities.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/BALANGKAS_Logo_Primary.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-130 -130 260 260'%3E%3Cpolygon points='-51.96,-15 0,15 0,75 -51.96,105 -103.92,75 -103.92,15' fill='%230C7A46'/%3E%3Cpolygon points='51.96,-15 103.92,15 103.92,75 51.96,105 0,75 0,15' fill='%23C79A3A'/%3E%3Cpolygon points='0,-105 51.96,-75 51.96,-15 0,15 -51.96,-15 -51.96,-75' fill='%237B1113'/%3E%3Ccircle cx='0' cy='15' r='12' fill='%23F3EEE7'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --maroon:#7B1113; --maroon-dk:#5E0D0F; --green:#0C7A46; --gold:#C79A3A;
+    --cream:#F3EEE7; --ink:#2B2B2B; --muted:#5c5c5c; --line:#e7ded2; --bg:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);line-height:1.6;background:var(--bg);-webkit-font-smoothing:antialiased}
+  a{color:var(--maroon);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* ---- nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+       backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav .inner{max-width:1040px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px}
+  .nav .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--maroon);letter-spacing:.5px}
+  .nav .brand svg{width:30px;height:30px;display:block}
+  .nav .links{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+  .nav .links a{color:var(--ink);font-size:.94rem;font-weight:600}
+  .nav .links a:hover{color:var(--maroon);text-decoration:none}
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden;background:var(--maroon);color:var(--cream);text-align:center;
+        padding:64px 24px 72px}
+  .hero .pattern{position:absolute;inset:0;opacity:.10;pointer-events:none}
+  .hero .logo{width:150px;height:150px;margin:0 auto 18px;position:relative}
+  .hero h1{font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:3px;font-weight:800;line-height:1}
+  .hero .sub{color:var(--gold);font-weight:700;letter-spacing:5px;font-size:clamp(.8rem,2.4vw,1rem);
+             margin-top:10px;text-transform:uppercase}
+  .hero .pillars{margin-top:16px;color:#f0dede;font-size:.95rem;letter-spacing:1px}
+  .hero .tagline{max-width:640px;margin:26px auto 0;font-size:1.15rem;color:#fbeeee}
+
+  /* ---- sections ---- */
+  section{padding:56px 0}
+  section:nth-of-type(even){background:#fbf8f3}
+  h2{color:var(--maroon);font-size:1.7rem;letter-spacing:.3px;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  h2::before{content:"";width:20px;height:22px;flex:0 0 auto;
+     background:var(--gold);
+     clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+  .lead{font-size:1.05rem;color:var(--muted)}
+  .derive{font-style:italic;color:var(--muted);border-left:4px solid var(--gold);padding:6px 0 6px 16px;margin-bottom:18px}
+  .derive b{color:var(--maroon);font-style:normal}
+
+  /* objectives */
+  ol.obj{list-style:none;counter-reset:o;display:grid;gap:14px}
+  ol.obj li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);
+     border-radius:12px;padding:18px 20px 18px 64px}
+  ol.obj li::before{content:counter(o);position:absolute;left:16px;top:16px;width:34px;height:34px;
+     background:var(--maroon);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+     font-weight:700}
+  section:nth-of-type(even) ol.obj li{background:#fff}
+
+  /* themes */
+  .themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .theme{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;
+     align-items:center;gap:14px;font-weight:700;color:var(--maroon)}
+  .theme .hx{width:26px;height:29px;flex:0 0 auto;
+     clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+  .theme:nth-child(1) .hx{background:var(--maroon)}
+  .theme:nth-child(2) .hx{background:var(--green)}
+  .theme:nth-child(3) .hx{background:var(--gold)}
+  .theme:nth-child(4) .hx{background:var(--maroon-dk)}
+
+  /* members */
+  .mgroup{margin-bottom:26px}
+  .mgroup h3{color:var(--green);font-size:1.05rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--maroon);
+     border-radius:10px;padding:12px 16px;font-weight:600}
+  .mgroup.leaders .card{border-left-color:var(--maroon)}
+  .mgroup.members .card{border-left-color:var(--green)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.92rem}
+
+  /* footer */
+  footer{background:var(--maroon);color:var(--cream);padding:34px 0}
+  footer .inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+  footer a{color:var(--gold)}
+  footer .pal{font-size:.85rem;color:#e9c9c9}
+
+  @media(max-width:640px){
+    .nav .links{gap:14px}
+    .nav .links a{font-size:.85rem}
+    section{padding:42px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="inner">
+    <span class="brand">
+      <svg viewBox="-130 -130 260 260" aria-hidden="true">
+        <polygon points="-51.96,-15 0,15 0,75 -51.96,105 -103.92,75 -103.92,15" fill="#0C7A46"/>
+        <polygon points="51.96,-15 103.92,15 103.92,75 51.96,105 0,75 0,15" fill="#C79A3A"/>
+        <polygon points="0,-105 51.96,-75 51.96,-15 0,15 -51.96,-15 -51.96,-75" fill="#7B1113"/>
+        <circle cx="0" cy="15" r="12" fill="#F3EEE7" stroke="#7B1113" stroke-width="3"/>
+      </svg>
+      BALANGKAS
+    </span>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#rationale">Rationale</a>
+      <a href="#objectives">Objectives</a>
+      <a href="#themes">Themes</a>
+      <a href="#members">Members</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <svg class="pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <pattern id="hexp" width="60" height="52" patternUnits="userSpaceOnUse" patternTransform="scale(1.6)">
+        <polygon points="15,0 45,0 60,26 45,52 15,52 0,26" fill="none" stroke="#F3EEE7" stroke-width="2"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexp)"/>
+  </svg>
+
+  <div class="logo">
+    <svg viewBox="-130 -130 260 260" aria-label="BALANGKAS logo">
+      <polygon points="-51.96,-15 0,15 0,75 -51.96,105 -103.92,75 -103.92,15" fill="#0C7A46"/>
+      <polygon points="51.96,-15 103.92,15 103.92,75 51.96,105 0,75 0,15" fill="#C79A3A"/>
+      <polygon points="0,-105 51.96,-75 51.96,-15 0,15 -51.96,-15 -51.96,-75" fill="#F3EEE7"/>
+      <circle cx="0" cy="15" r="12" fill="#7B1113"/>
+    </svg>
+  </div>
+  <h1>BALANGKAS</h1>
+  <div class="sub">Planning Laboratory</div>
+  <div class="pillars">Land Use &middot; Transport &middot; Regional &middot; Public Works</div>
+  <p class="tagline">Turning fragmented spatial data into integrated planning for communities.</p>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2>About</h2>
+    <p class="derive">The name of the planning laboratory is derived from
+      Ur<b>BA</b>n Systems, <b>LAN</b>d Use, Re<b>G</b>ional, Public Wor<b>K</b>s, <b>A</b>nd Tran<b>S</b>port.</p>
+    <p class="lead">BALANGKAS is a permanent research and graduate-mentorship program at the
+      Department of Community and Environmental Resource Planning (DCERP), College of Human Ecology,
+      University of the Philippines Los Baños.</p>
+  </div>
+</section>
+
+<!-- RATIONALE -->
+<section id="rationale">
+  <div class="container">
+    <h2>Rationale</h2>
+    <p>The BALANGKAS Planning Laboratory is a permanent research and graduate mentorship program
+      addressing land use, transportation, regional, and public works constraints in the CALABARZON
+      growth area. It uses publicly accessible secondary datasets and free GIS tools to compile,
+      harmonize, and analyze existing public geospatial data into reusable decision-support products
+      like suitability, transport accessibility, and hazard exposure layers. This approach ensures low
+      cost, rapid execution, reproducibility, and a shared spatial data infrastructure for future
+      graduate cohorts.</p>
+  </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section id="objectives">
+  <div class="container">
+    <h2>Objectives</h2>
+    <ol class="obj">
+      <li>Design, implement, and evaluate research, mentorship, and innovation activities in land use,
+        transport, regional, and public-works planning using openly available secondary geospatial datasets.</li>
+      <li>Facilitate graduate research apprenticeship and hands-on GIS/QGIS training, with each mentee
+        owning a thematic sub-study nested in a shared spatial database.</li>
+      <li>Initiate and sustain collaboration with LGUs, DHSUD, SUCs/HEIs, and partner institutions on
+        land-use-mapping&ndash;aligned planning analytics.</li>
+      <li>Conduct extension work translating spatial decision-support products into policy briefs and
+        LGU planning inputs for public service.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section id="themes">
+  <div class="container">
+    <h2>Research Themes</h2>
+    <div class="themes">
+      <div class="theme"><span class="hx"></span> Land Use Planning</div>
+      <div class="theme"><span class="hx"></span> Transport Planning</div>
+      <div class="theme"><span class="hx"></span> Regional Planning</div>
+      <div class="theme"><span class="hx"></span> Public Works &amp; Estate Planning</div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="container">
+    <h2>Research Lab Members</h2>
+
+    <div class="mgroup leaders">
+      <h3>Team Leaders</h3>
+      <div class="cards">
+        <div class="card">Asst. Prof. Edwin R. Abucay</div>
+        <div class="card">Dr. Evaristo Nino T. Cando, III</div>
+        <div class="card">Asst. Prof. Arlene B. Tolentino</div>
+      </div>
+    </div>
+
+    <div class="mgroup members">
+      <h3>Team Members</h3>
+      <div class="cards">
+        <div class="card">Asst. Prof. Cheamson Garret E. Boongaling</div>
+        <div class="card">Ryan Randle B. Rivera</div>
+        <div class="card">Grace Anne C. Buno</div>
+      </div>
+    </div>
+
+    <div class="mgroup">
+      <h3>Affiliate Members</h3>
+      <div class="chips">
+        <span class="chip">Dr. Efraim D. Roxas</span>
+        <span class="chip">Dr. Kristina S.A. Cordero-Bailey</span>
+        <span class="chip">Dr. Sheila B. Austero</span>
+        <span class="chip">Asst. Prof. Angelica B. Magpantay</span>
+        <span class="chip">Asst. Prof. Almira Geles L. de Mesa</span>
+        <span class="chip">Asst. Prof. Kyle Pierre R. Israel</span>
+        <span class="chip">Dayniele D. Loren</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container inner">
+    <div>
+      <strong>BALANGKAS Planning Laboratory</strong><br>
+      DCERP &middot; College of Human Ecology &middot;
+      <a href="https://dcerp.che.uplb.edu.ph/" target="_blank" rel="noopener">UP Los Ba&ntilde;os</a>
+    </div>
+    <div class="pal">UP Maroon &middot; Forest Green &middot; Gold</div>
+  </div>
+</footer>
+
+</body>
+</html>
