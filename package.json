@@ -1,0 +1,18 @@
+{
+  "name": "balangkas",
+  "version": "1.0.0",
+  "description": "BALANGKAS Planning Laboratory website",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [
+    "planning",
+    "laboratory",
+    "uplb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
